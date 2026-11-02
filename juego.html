@@ -33,7 +33,7 @@
       font-size: 50px;
       background: none;
       border: none;
-      transition: left 0.3s, top 0.3s;
+      transition: left 0.35s, top 0.35s;
       touch-action: manipulation;
     }
     #empezar {
@@ -82,6 +82,7 @@
     bicho.addEventListener("click", function () {
       if (jugando) {
         puntos = puntos + 1;
+        navigator.vibrate(60);
         document.getElementById("puntos").textContent = puntos;
         mover();
       }
@@ -110,6 +111,12 @@
         record = puntos;
         localStorage.setItem("record", record);
         document.getElementById("record").textContent = record;
+      }
+      if (puntos >= 30) {
+          document.ElementById("mensaje").textContent = "¡Leyenda! " + puntos + " puntos");
+      }
+      if (puntos >= 20) { 
+          document.ElementById("mensaje").textContent = "¡Pro! " + puntos + " puntos");
       }
       document.getElementById("mensaje").textContent = "¡Se acabó el tiempo! Hiciste " + puntos + " puntos";
     }
